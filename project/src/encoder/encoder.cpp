@@ -1,4 +1,4 @@
-#include "encoder/encoder.h"
+#include "encoder/encoder.hpp"
 #include <iostream>
 
 std::string encoder(std::string text, int n)
