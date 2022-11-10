@@ -1,17 +1,19 @@
-.PHONY: clean create_directories main_bin 
+.PHONY: clean create_directories 
 
-all: clean  create_directories lib/libencoder.so lib/libdecoder.so main_bin make_encoder_sahred_lib_avalible_at_runtime  make_decoder_sahred_lib_avalible_at_runtime lib/libunit_test.a 
+all: clean  create_directories lib/libencoder.so lib/libdecoder.so lib/libunit_test.a  make_encoder_sahred_lib_avalible_at_runtime  main_bin 
 
 main_bin:
 	@echo "Building the project..."
-	@g++ src/main.cpp -L ./lib -I inc -Wall  -lencoder -o bin/main_encoder
-
+	@echo $(LD_LIBRARY_PATH)
+	@g++ -c src/main.cpp -I./inc -o ./obj/main.o
+	@g++ src/main.cpp -L `pwd`/lib -I./inc -Wall  -lencoder -ldecoder -o bin/main_encoder
+#	@g++ obj/main.o -I./inc -L./lib -Wl, -rpath=`pwd`/lib -lencoder -ldecoder -o ./bin/main
 # /---------------------------------------------------encoder--------------------------------------------------/
 
-# Make shared library available at runtime
-make_encoder_sahred_lib_avalible_at_runtime: lib/libencoder.so
+make_encoder_sahred_lib_avalible_at_runtime: 
 	@echo "Make shared library available at runtime for encoder"
-	@export LD_LIBRARY_PATH=`pwd`/lib:$(LD_LIBRARY_PATH)
+	@export LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):`pwd`/lib
+
 # Create shared .SO library
 lib/libencoder.so: obj/encoder/encoder.o
 	@echo "Creating shared library libencoder"
@@ -20,18 +22,15 @@ lib/libencoder.so: obj/encoder/encoder.o
 # Convert library code to Object file
 obj/encoder/encoder.o: obj/encoder
 	@echo "Creating object file for encoder..."
-	@g++ -c src/encoder/encoder.cpp -I inc -o obj/encoder/encoder.o  
+	@g++ -I./inc -fPIC -c src/encoder/encoder.cpp -o obj/encoder/encoder.o  
 
+#Creating objec diectory
 obj/encoder:
 	@echo "Creating obj/encoder diectory..."
 	@mkdir -p obj/encoder
 
 # /---------------------------------------------------decoder--------------------------------------------------/
 
-make_decoder_sahred_lib_avalible_at_runtime: lib/libdecoder.so
-	@echo "Make shared library available at runtime for decoder"
-	@export LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):`pwd`
-# Create shared .SO library
 lib/libdecoder.so: obj/decoder/decoder.o
 	@echo "Creating shared library libencoder"
 	@g++ -shared -fPIC obj/decoder/decoder.o -o lib/libdecoder.so 
@@ -39,7 +38,7 @@ lib/libdecoder.so: obj/decoder/decoder.o
 # Convert library code to Object file
 obj/decoder/decoder.o: obj/decoder
 	@echo "Creating object file for decoder..."
-	@g++ -c src/decoder/decoder.cpp -I inc -o obj/decoder/decoder.o  
+	@g++ -I./inc -fPIC -c src/decoder/decoder.cpp -o obj/decoder/decoder.o
 
 obj/decoder:
 	@echo "Creating obj/encoder diectory..."

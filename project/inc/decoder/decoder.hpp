@@ -1,6 +1,6 @@
 #include <iostream>
-#ifndef __DECODER_H__
-#define __DECODER_H__
+#ifndef __DECODER_HPP__
+#define __DECODER_HPP__
 
 std::string decoder(std::string, int);    
 
