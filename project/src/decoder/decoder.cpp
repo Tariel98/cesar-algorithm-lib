@@ -1,4 +1,5 @@
-#include "decoder/decoder.hpp"
+#include <iostream>
+#include "decoder/decoder.h"
 
 std::string decoder(std::string text, int n)
 {
