@@ -5,7 +5,7 @@ all: clean  create_directories lib/libencoder.so lib/libdecoder.so lib/libunit_t
 main_bin:
 	@echo "Building the project..."
 	@g++ -c src/main.cpp -I./inc -o ./obj/main.o
-	@g++ src/main.cpp -L ./lib -I./inc -Wall  -lencoder -ldecoder -lunit_test -o bin/main_encoder
+	@g++ src/main.cpp -L ./lib -I./inc -Wall  -lencoder -ldecoder -lunit_test -o bin/main
 # /---------------------------------------------------encoder--------------------------------------------------/
 
 # Create shared .SO library

@@ -7,11 +7,11 @@ int main() {
 
     std::cout << "\n_______________RUNING INCLUDED ENCODER SHARED LIBRARY________________" << std::endl;
     
-    std::cout <<"\n\t"<< encoder("THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG", 3) << std::endl;
+    std::cout <<"\n\t"<< encoder("The Quick Brown Fox Jumos Over The Lazy Dog", 3) << std::endl;
     
-    std::cout << "\n_______________RUNING INCLUDED ENCODER SHARED LIBRARY________________" << std::endl;
+    std::cout << "\n_______________RUNING INCLUDED DECODER SHARED LIBRARY________________" << std::endl;
 
-    std::cout <<"\n\t"<< decoder("QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD", 3) << std::endl;
+    std::cout <<"\n\t"<< decoder("Qeb Nrfzh Yoltk Clu Grjmp Lsbo Qeb Ixwv Ald", 3) << std::endl;
 
     std::cout << "\n_______________RUNING INCLUDED UNIT_TEST STATYC LIBRARY________________" << std::endl;
 
