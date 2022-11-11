@@ -16,17 +16,7 @@ int main() {
     std::cout << "\n_______________RUNING INCLUDED UNIT_TEST STATYC LIBRARY________________" << std::endl;
 
     test_encoder("THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG", 3, "QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD");
-    test_encoder("AJSKD", 3, "");
-    test_encoder("AJSKD", 3, "HELLO");
-    test_encoder("AJSKD", 3, "HELLO");
-    test_encoder("AJSKD", 3, "HELLO");
-    test_encoder("AJSKD", 3, "HELLO");
-    test_encoder("AJSKD", 3, "HELLO");
-    test_encoder("AJSKD", 3, "HELLO");
-    test_encoder("AJSKD", 3, "HELLO");
-    test_encoder("AJSKD", 3, "HELLO");
-    test_encoder("AJSKD", 3, "HELLO");
-    test_encoder("AJSKD", 3, "HELLO");
     test_decoder("QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD", 3, "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG");
+    test_decoder("Qeb Nrfzh Yoltk Clu Grjmp Lsbo Qeb Ixwv Ald", 3, "The Quick Brown Fox Jumps Over The Lazy Dog");
     std::cout<<std::endl;
 }
