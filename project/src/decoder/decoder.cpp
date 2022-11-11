@@ -1,5 +1,4 @@
 #include "decoder/decoder.hpp"
-#include <iostream>
 
 std::string decoder(std::string text, int n)
 {

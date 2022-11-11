@@ -1,8 +1,8 @@
 #ifndef __UNIT_TEST_H__
 #define __UNIT_TEST_H__
-#include <iostream>
 
-void test_encoder(std::string, int);
+void test_encoder(std::string, int, std::string);
+void test_decoder(std::string, int, std::string);
 
 #endif
 

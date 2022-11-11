@@ -1,18 +1,12 @@
 .PHONY: clean create_directories 
 
-all: clean  create_directories lib/libencoder.so lib/libdecoder.so lib/libunit_test.a  make_encoder_sahred_lib_avalible_at_runtime  main_bin 
+all: clean  create_directories lib/libencoder.so lib/libdecoder.so lib/libunit_test.a  main_bin 
 
 main_bin:
 	@echo "Building the project..."
-	@echo $(LD_LIBRARY_PATH)
 	@g++ -c src/main.cpp -I./inc -o ./obj/main.o
-	@g++ src/main.cpp -L `pwd`/lib -I./inc -Wall  -lencoder -ldecoder -o bin/main_encoder
-#	@g++ obj/main.o -I./inc -L./lib -Wl, -rpath=`pwd`/lib -lencoder -ldecoder -o ./bin/main
+	@g++ src/main.cpp -L ./lib -I./inc -Wall  -lencoder -ldecoder -lunit_test -o bin/main_encoder
 # /---------------------------------------------------encoder--------------------------------------------------/
-
-make_encoder_sahred_lib_avalible_at_runtime: 
-	@echo "Make shared library available at runtime for encoder"
-	@export LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):`pwd`/lib
 
 # Create shared .SO library
 lib/libencoder.so: obj/encoder/encoder.o

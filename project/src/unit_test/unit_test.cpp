@@ -1,8 +1,7 @@
-#include <string>
-#include <unit_test/unit_test.h>
+#include <iostream>
+#include "unit_test/unit_test.h"
 #include "encoder/encoder.hpp"
 #include "decoder/decoder.hpp"
-#include <iostream>
 
 void test_encoder(std::string text, int n, std::string exectedResurlt){
     
@@ -10,9 +9,8 @@ void test_encoder(std::string text, int n, std::string exectedResurlt){
     if (result != exectedResurlt){
         std::cerr << "###Test Filed!###" << std::endl;
     }else {
-        std::cout << "***Test Passed!***";
+        std::cout << "***Test Passed!***" << std::endl;
     }
-     
 }
 
 void test_decoder(std::string text, int n, std::string exectedResurlt){
@@ -22,7 +20,7 @@ void test_decoder(std::string text, int n, std::string exectedResurlt){
     if (result != exectedResurlt){
         std::cerr << "###Test Filed!###" << std::endl;
     }else {
-        std::cout << "***Test Passed!***";
+        std::cout << "***Test Passed!***" << std::endl;
     }
 
 }
