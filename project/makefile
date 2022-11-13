@@ -1,6 +1,6 @@
 WILD = $(wildcard src/*.cpp)
 O = $(patsubst src/%.cpp,%.o,$(WILD))
-SO = encoder.so decoder.so
+SO = encoder.so  decoder.so
 G = g++
 
 all: clean dir main 
@@ -19,7 +19,7 @@ main: $(O) $(SO) unit_test.a
 	@echo "Creating .so files..."
 	@$(G) -shared -fPIC $^ -o lib/lib$@
 
-unit_test.a:
+unit_test.a: 
 	@echo "Creating unit_test.a..."
 	@ar cvq lib/lib$@ obj/unit_test.o
 
